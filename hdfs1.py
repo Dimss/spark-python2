@@ -10,9 +10,9 @@ class CONF(object):
     # DEFAULTS
     _DEFAULTS = {
         'PATH': 'hdfs://172.20.10.5:9000/user/root/df_%s',
-        'IMAGE': 'hdfs://172.20.10.5:9000/user/root/df_%s',
+        'IMAGE': 'dimssss/spark-py:v2.4.3-v3',
         'MODE': 'cluster',
-        'MASTER': 'hdfs://172.20.10.5:9000/user/root/df_%s'
+        'MASTER': 'k8s://https://ocp-local:8443'
     }
 
     # SPARK CONFIGS
