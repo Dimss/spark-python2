@@ -54,8 +54,8 @@ def get_spark_session():
 
 def write_to_hdfs(df, path):
     # df.write.mode("overwrite").format("parquet").save(path)
-    # df.write.mode("overwrite").parquet(path)
-    df.write.parquet(path)
+    df.write.mode("overwrite").parquet(path)
+    # df.write.parquet(path)
 
 
 def get_path(df_n):
