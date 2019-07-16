@@ -9,7 +9,7 @@ SAPP_PROFILE = "prod" if os.environ.get('PROFILE') == "prod" else "dev"
 class CONF(object):
     # DEFAULTS
     _DEFAULTS = {
-        'PATH': 'hdfs://10.100.102.5:9000/user/root/df_1{id}',
+        'PATH': 'hdfs://172.20.10.5:9000/user/root/df_1{id}',
         'IMAGE': 'dimssss/spark-py:v2.4.3-v3',
         'MODE': 'cluster',
         'MASTER': 'k8s://https://ocp-local:8443',
