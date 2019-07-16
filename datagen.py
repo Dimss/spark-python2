@@ -4,7 +4,7 @@ import time
 from pyspark import SparkConf, SparkContext, SQLContext
 from pyspark.sql.functions import lit
 
-SAPP_PROFILE = "prod" if os.environ.get('PROFILE') == "prod" else "dev"
+SAPP_PROFILE = "prod" if os.environ.get('SAPP_PROFILE') == "prod" else "dev"
 
 
 class CONF(object):
