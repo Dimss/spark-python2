@@ -38,8 +38,6 @@
     --name spark-k8s-test \
     --conf spark.kubernetes.namespace=spark \
     --conf spark.executor.instances=1 \
-    --conf spark.io.compression.codec=snappy \
-    --conf spark.io.compression.codec=snappy \
 	--conf spark.kubernetes.driverEnv.LD_LIBRARY_PATH="/lib64/" \
 	--conf spark.kubernetes.driverEnv.SAPP_PROFILE=prod \
 	--conf spark.kubernetes.driverEnv.SAPP_HDFS="hdfs://172.20.10.5:9000/user/root/df_{id}" \
