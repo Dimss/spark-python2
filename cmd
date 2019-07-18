@@ -48,7 +48,7 @@
     https://raw.githubusercontent.com/Dimss/spark-python2/master/datagen.py
 
 
-dimssss/spark-py:v2.4.3-0.3
+
 
  bin/spark-submit \
     --master k8s://https://ocp-local:8443 \
@@ -62,5 +62,5 @@ dimssss/spark-py:v2.4.3-0.3
 	--conf spark.kubernetes.driverEnv.SAPP_DFS_N=10 \
 	--conf spark.kubernetes.driverEnv.SAPP_COLS_N=10 \
 	--conf spark.kubernetes.driverEnv.SAPP_ROWS_N=10 \
-    --conf spark.kubernetes.container.image=dimssss/spark-py:2.4.3-0.2 \
-    https://raw.githubusercontent.com/Dimss/spark-python2/master/datagen.py
+    --conf spark.kubernetes.container.image=dimssss/spark-py:v2.4.3-0.3 \
+    https://raw.githubusercontent.com/Dimss/spark-python2/master/dataproc.py

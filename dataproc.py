@@ -4,6 +4,9 @@ from concurrent import futures
 from concurrent.futures import ThreadPoolExecutor
 from snakebite.client import Client
 
+DUP_SIZE = float(1024 * 1024)
+SAPP_PROFILE = "prod" if os.environ.get('SAPP_PROFILE') == "prod" else "dev"
+
 
 class CONF(object):
     # DEFAULTS
@@ -24,10 +27,6 @@ class CONF(object):
     PYSPARK_IMAGE = _DEFAULTS['IMAGE'] if os.environ.get('SAPP_IMAGE') is None else os.environ.get('SAPP_IMAGE')
     NAMESPACE = _DEFAULTS['NAMESPACE'] if os.environ.get('SAPP_NAMESPACE') is None else os.environ.get('SAPP_NAMESPACE')
     DEPLOY_MODE = _DEFAULTS['MODE'] if os.environ.get('SAPP_DMODE') is None else os.environ.get('SAPP_DMODE')
-
-
-DUP_SIZE = float(1024 * 1024)
-SAPP_PROFILE = "prod" if os.environ.get('PROFILE') == "prod" else "dev"
 
 
 def _set_spark_session():
