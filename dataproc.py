@@ -117,6 +117,13 @@ def get_df_pats():
     return df_paths
 
 
+def debug_prints():
+    print("#################################### APP CONF ####################################")
+    print("App PROFILE: {}, HDFS HOST: {}".format(SAPP_PROFILE, CONF.HDFS_HOST))
+    print("##################################################################################")
+
+
+debug_prints()
 _set_spark_session()
 df_paths = get_df_pats()
 perform_join(get_dataframes_for_join(df_paths), 'key')

@@ -48,7 +48,7 @@
     https://raw.githubusercontent.com/Dimss/spark-python2/master/datagen.py
 
 
-
+####### DATAPROC script #######
 
  bin/spark-submit \
     --master k8s://https://ocp-local:8443 \
@@ -56,11 +56,7 @@
     --name spark-k8s-test \
     --conf spark.kubernetes.namespace=spark \
     --conf spark.executor.instances=1 \
-	--conf spark.kubernetes.driverEnv.LD_LIBRARY_PATH="/lib64/" \
 	--conf spark.kubernetes.driverEnv.SAPP_PROFILE=prod \
-	--conf spark.kubernetes.driverEnv.SAPP_HDFS="hdfs://172.20.10.5:9000/user/root/df_{id}" \
-	--conf spark.kubernetes.driverEnv.SAPP_DFS_N=10 \
-	--conf spark.kubernetes.driverEnv.SAPP_COLS_N=10 \
-	--conf spark.kubernetes.driverEnv.SAPP_ROWS_N=10 \
+	--conf spark.kubernetes.driverEnv.SAPP_HDFS_HOST=172.20.10.5 \
     --conf spark.kubernetes.container.image=dimssss/spark-py:v2.4.3-0.3 \
     https://raw.githubusercontent.com/Dimss/spark-python2/master/dataproc.py
