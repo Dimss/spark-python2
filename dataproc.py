@@ -63,6 +63,7 @@ def perform_join(dfs, keys):
     if len(dfs) == 0:
         raise Exception()
     if len(dfs) == 1:
+        print(dfs[0][0])
         return dfs[0][0]
 
     dfs.sort(key=lambda x: x[1])
@@ -93,7 +94,6 @@ def get_dataframe(path):
 
 def get_path_size_in_m(path):
     # List files with their properties
-    print(path)
     HDFS_CLIENT = Client(CONF.HDFS_HOST, 9000, use_trash=False)
     files = list(HDFS_CLIENT.du([path]))
     # Calculate file size in mega
