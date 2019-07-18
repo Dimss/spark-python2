@@ -11,8 +11,8 @@ class CONF(object):
     # DEFAULTS
     _DEFAULTS = {
         'PATH': 'hdfs://172.20.10.5:9000/user/root/df_1{id}',
-        'IMAGE': 'dimssss/spark-py:v2.4.3-v3',
-        'MODE': 'cluster',
+        'IMAGE': 'dimssss/spark-py:2.4.3-0.2',
+        'MODE': 'client',
         'MASTER': 'k8s://https://ocp-local:8443',
         'NAMESPACE': 'spark',
         'DFS_N': 10,
@@ -45,7 +45,6 @@ def get_spark_session():
                 .set('deploy-mode', CONF.DEPLOY_MODE) \
                 .set('spark.kubernetes.namespace', CONF.NAMESPACE)
             CONF.SPARK_CONTEXT = SparkContext(conf=conf)
-            CONF.SPARK_SQLCONTEXT = SQLContext(CONF.SPARK_CONTEXT)
         else:
             CONF.SPARK_CONTEXT = SparkContext()
         # Set spark context
@@ -55,9 +54,7 @@ def get_spark_session():
 
 def write_to_hdfs(df, path):
     print("Gonna save parquet file. . .")
-    # df.write.mode("overwrite").format("parquet").save(path)
-    df.write.mode("overwrite").parquet(path)
-    # df.write.parquet(path)
+    df.write.mode("overwrite").format("parquet").save(path)
 
 
 def get_path(df_n):
