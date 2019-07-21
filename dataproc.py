@@ -127,5 +127,6 @@ def debug_prints():
 debug_prints()
 _set_spark_session()
 df_paths = get_df_pats()
+print (df_paths)
 perform_join(get_dataframes_for_join(df_paths), 'key')
 CONF.SPARK_CONTEXT.stop()
