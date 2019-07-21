@@ -83,6 +83,7 @@ def concurrent(func, executors_max, params_lists):
         future_dfs = {executor.submit(func, params_list) for params_list in params_lists}
         for future in futures.as_completed(future_dfs):
             res = future.result()
+            print("---------> {}".format(res))
             if res:
                 results.append(res)
     return results
