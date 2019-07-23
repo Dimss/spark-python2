@@ -116,7 +116,7 @@ bin/spark-submit \
     --conf spark.kubernetes.namespace=spark \
     --conf spark.executor.instances=5 \
     --conf spark.kubernetes.driverEnv.SAPP_PROFILE=prod \
-    --conf spark.kubernetes.driverEnv.SAPP_HDFS="hdfs://172.22.195.54:9000/user/root/df_{id}" \
+    --conf spark.kubernetes.driverEnv.SAPP_HDFS="hdfs://:9000/user/root/df_{id}" \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.spark.mount.path=/tmp/pv \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.spark.options.claimName=spark \
     --conf spark.kubernetes.container.image=/spark-py:v2.4.3-centos7-0.2 \
@@ -131,7 +131,7 @@ bin/spark-submit \
     --conf spark.kubernetes.namespace=spark \
     --conf spark.executor.instances=5 \
     --conf spark.kubernetes.driverEnv.SAPP_PROFILE=prod \
-    --conf spark.kubernetes.driverEnv.SAPP_HDFS_HOST=172.22.195.54 \
+    --conf spark.kubernetes.driverEnv.SAPP_HDFS_HOST= \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.spark.mount.path=/tmp/pv \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.spark.options.claimName=spark \
     --conf spark.kubernetes.container.image=/spark-py:v2.4.3-centos7-0.2 \
