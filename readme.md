@@ -67,12 +67,12 @@ cd /path/to/your/spark/installation
 # Run without dynamic allocation
 cd /path/to/your/spark/installation 
 bin/spark-submit \
-    --master k8s://https://devmaster.resource.bank:8443 \
+    --master k8s://https://:8443 \
     --deploy-mode cluster \
     --name spark-k8s-test \
     --conf spark.kubernetes.namespace=spark \
     --conf spark.executor.instances=3 \
-    --conf spark.kubernetes.container.image=docker-external.artifactory.resource.bank/spark-py:v2.4.3-v3 \
+    --conf spark.kubernetes.container.image=/spark-py:v2.4.3-v3 \
     /tmp/sparkapp1.py
 
 ```  
@@ -92,7 +92,7 @@ oc create -f dep.yaml
 # Second execute the spark apps
 cd /path/to/your/spark/installation 
 bin/spark-submit \
-    --master k8s://https://devmaster.resource.bank:8443 \
+    --master k8s://https://:8443 \
     --deploy-mode cluster \
     --name spark-k8s-test \
     --conf spark.kubernetes.namespace=spark \
@@ -101,7 +101,7 @@ bin/spark-submit \
     --conf spark.shuffle.service.enabled=true \
     --conf spark.kubernetes.shuffle.namespace=spark \
     --conf spark.kubernetes.shuffle.labels="app=spark-shuffle" \
-    --conf spark.kubernetes.container.image=docker-external.artifactory.resource.bank/spark-py:v2.4.3-v3 \
+    --conf spark.kubernetes.container.image=/spark-py:v2.4.3-v3 \
     /tmp/sparkapp1.py
 ```  
   
@@ -110,7 +110,7 @@ bin/spark-submit \
 ```bash
  # DATAGEN
  bin/spark-submit \
-    --master k8s://https://devmaster.resource.bank:8443 \
+    --master k8s://:8443 \
     --deploy-mode cluster \
     --name spark-k8s-test \
     --conf spark.kubernetes.namespace=spark \
@@ -119,13 +119,13 @@ bin/spark-submit \
     --conf spark.kubernetes.driverEnv.SAPP_HDFS="hdfs://172.22.195.54:9000/user/root/df_{id}" \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.spark.mount.path=/tmp/pv \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.spark.options.claimName=spark \
-    --conf spark.kubernetes.container.image=docker-ext.artifactory.resource.bank/spark-py:v2.4.3-centos7-0.2 \
+    --conf spark.kubernetes.container.image=/spark-py:v2.4.3-centos7-0.2 \
     /tmp/pv/datagen.py
 ```
 ```bash
  # DATAPROC
  bin/spark-submit \
-    --master k8s://https://devmaster.resource.bank:8443 \
+    --master k8s://:8443 \
     --deploy-mode cluster \
     --name spark-k8s-test \
     --conf spark.kubernetes.namespace=spark \
@@ -134,6 +134,6 @@ bin/spark-submit \
     --conf spark.kubernetes.driverEnv.SAPP_HDFS_HOST=172.22.195.54 \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.spark.mount.path=/tmp/pv \
     --conf spark.kubernetes.driver.volumes.persistentVolumeClaim.spark.options.claimName=spark \
-    --conf spark.kubernetes.container.image=docker-ext.artifactory.resource.bank/spark-py:v2.4.3-centos7-0.2 \
+    --conf spark.kubernetes.container.image=/spark-py:v2.4.3-centos7-0.2 \
     /tmp/pv/dataproc.py
 ```
