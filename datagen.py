@@ -64,7 +64,7 @@ def get_path(df_n):
 def create_generated_dfs(dfs_n, cols_n, rows_n):
     key = 'key'
     key_df = get_spark_session().createDataFrame(map(lambda x: [rows_n], xrange(rows_n)), [key])
-
+    time.sleep(3600)
     for i in xrange(dfs_n):
         df = key_df
         for col_id in xrange(cols_n):
@@ -81,6 +81,5 @@ def debug_prints():
 
 
 debug_prints()
-time.sleep(3600)
 create_generated_dfs(CONF.DFS_N, CONF.COLS_N, CONF.ROWS_N)
 CONF.SPARK_CONTEXT.stop()
