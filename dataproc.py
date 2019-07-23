@@ -12,7 +12,7 @@ class CONF(object):
     # DEFAULTS
     _DEFAULTS = {
         'HDFS_HOST': '172.20.10.5',
-        'IMAGE': 'dimssss/spark-py:2.4.3-0.2',
+        'IMAGE': 'dimssss/spark-py:v2.4.3-centos7-0.2',
         'MODE': 'cluster',
         'MASTER': 'k8s://https://ocp-local:8443',
         'NAMESPACE': 'spark',
@@ -128,5 +128,5 @@ debug_prints()
 _set_spark_session()
 df_paths = get_df_pats()
 print (df_paths)
-perform_join(get_dataframes_for_join(df_paths), 'key')
+df = perform_join(get_dataframes_for_join(df_paths), 'key')
 CONF.SPARK_CONTEXT.stop()

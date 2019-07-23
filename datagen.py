@@ -11,7 +11,7 @@ class CONF(object):
     # DEFAULTS
     _DEFAULTS = {
         'PATH': 'hdfs://172.20.10.5:9000/user/root/df_1{id}',
-        'IMAGE': 'dimssss/spark-py:2.4.3-0.2',
+        'IMAGE': 'dimssss/spark-py:v2.4.3-centos7-0.2',
         'MODE': 'client',
         'MASTER': 'k8s://https://ocp-local:8443',
         'NAMESPACE': 'spark',
@@ -81,5 +81,6 @@ def debug_prints():
 
 
 debug_prints()
+time.sleep(3600)
 create_generated_dfs(CONF.DFS_N, CONF.COLS_N, CONF.ROWS_N)
 CONF.SPARK_CONTEXT.stop()
