@@ -28,7 +28,7 @@
 	--conf spark.kubernetes.driverEnv.SAPP_DFS_N=10 \
 	--conf spark.kubernetes.driverEnv.SAPP_COLS_N=10 \
 	--conf spark.kubernetes.driverEnv.SAPP_ROWS_N=10 \
-    --conf spark.kubernetes.container.image=dimssss/spark-py:v2.4.3-v19 \
+    --conf spark.kubernetes.container.image=docker.io/dimssss/spark-py:v2.4.3-centos7-0.2 \
     https://raw.githubusercontent.com/Dimss/spark-python2/master/datagen.py
 
 

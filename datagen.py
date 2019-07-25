@@ -12,7 +12,7 @@ class CONF(object):
     _DEFAULTS = {
         'PATH': 'hdfs://172.20.10.5:9000/user/root/df_1{id}',
         'IMAGE': 'dimssss/spark-py:v2.4.3-centos7-0.2',
-        'MODE': 'client',
+        'MODE': 'cluster',
         'MASTER': 'k8s://https://ocp-local:8443',
         'NAMESPACE': 'spark',
         'DFS_N': 10,
@@ -67,7 +67,7 @@ def create_generated_dfs(dfs_n, cols_n, rows_n):
     for i in xrange(dfs_n):
         df = key_df
         for col_id in xrange(cols_n):
-            df = key_df.withColumn('c_%s' % col_id, lit(("%s" % col_id) * 20))
+            df = key_df.withColumn('c_%s_%s' % (i, col_id), lit(("%s" % col_id) * 20))
         df.show()
         write_to_hdfs(df, get_path(i))
 
@@ -81,5 +81,4 @@ def debug_prints():
 
 debug_prints()
 create_generated_dfs(CONF.DFS_N, CONF.COLS_N, CONF.ROWS_N)
-time.sleep(3600)
 CONF.SPARK_CONTEXT.stop()

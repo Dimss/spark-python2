@@ -106,6 +106,11 @@ def get_dataframe_tuple(path):
     return get_dataframe(path), get_path_size_in_m(path)
 
 
+def write_to_hdfs(df, path):
+    print("Gonna save parquet file. . .")
+    df.write.mode("overwrite").format("parquet").save(path)
+
+
 def get_dataframes_for_join(paths):
     return concurrent(get_dataframe_tuple, 20, paths)
 
@@ -129,4 +134,6 @@ _set_spark_session()
 df_paths = get_df_pats()
 print (df_paths)
 df = perform_join(get_dataframes_for_join(df_paths), 'key')
+save_path = "{}_joined_df".format(df_paths[0])
+write_to_hdfs(df, save_path)
 CONF.SPARK_CONTEXT.stop()
