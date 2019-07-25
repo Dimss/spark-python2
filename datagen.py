@@ -15,8 +15,8 @@ class CONF(object):
         'MODE': 'cluster',
         'MASTER': 'k8s://https://ocp-local:8443',
         'NAMESPACE': 'spark',
-        'DFS_N': 10,
-        'COLS_N': 10,
+        'DFS_N': 2,
+        'COLS_N': 5,
         'ROWS_N': 10
     }
 

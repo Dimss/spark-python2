@@ -119,6 +119,8 @@ def get_df_pats():
     df_paths = []
     HDFS_CLIENT = Client(CONF.HDFS_HOST, 9000, use_trash=False)
     for file_entry in HDFS_CLIENT.ls(['/user/root']):
+        if 'df_joined_df' in file_entry['path']:
+            continue
         df_paths.append(file_entry['path'])
     return df_paths
 
@@ -134,6 +136,6 @@ _set_spark_session()
 df_paths = get_df_pats()
 print (df_paths)
 df = perform_join(get_dataframes_for_join(df_paths), 'key')
-save_path = "{}_joined_df".format(df_paths[0])
+save_path = "hdfs://{}:9000/user/root/df_joined_df".format(CONF.HDFS_HOST)
 write_to_hdfs(df, save_path)
 CONF.SPARK_CONTEXT.stop()
